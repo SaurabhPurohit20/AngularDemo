@@ -1,0 +1,60 @@
+<form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)" novalidate>
+
+	<!-- Text Input -->
+	<label for="name">Name:</label>
+	<input type="text" id="name" name="name" ngModel required>
+	<div *ngIf="myForm.submitted && !myForm.controls['name']?.valid">Name is required</div>
+
+	<!-- Email Input -->
+	<label for="email">Email:</label>
+	<input type="email" id="email" name="email" ngModel required email>
+	<div *ngIf="myForm.submitted && !myForm.controls['email']?.valid">Valid Email is required</div>
+
+	<!-- Password Input -->
+	<label for="password">Password:</label>
+	<input type="password" id="password" name="password" ngModel minlength="6">
+	<div *ngIf="myForm.submitted && !myForm.controls['password']?.valid">Password must be at least 6 characters</div>
+
+	<!-- Radio Buttons -->
+	<label>Gender:</label>
+	<input type="radio" id="male" name="gender" value="male" ngModel required>
+	<label for="male">Male</label>
+	<input type="radio" id="female" name="gender" value="female" ngModel>
+	<label for="female">Female</label>
+	<div *ngIf="myForm.submitted && !myForm.controls['gender']?.valid">Gender is required</div>
+
+	<!-- Checkbox -->
+	<label for="subscribe">Subscribe to newsletter:</label>
+	<input type="checkbox" id="subscribe" name="subscribe" ngModel>
+
+	<!-- Select Dropdown -->
+	<label for="country">Country:</label>
+	<select id="country" name="country" ngModel required>
+		<option value="" disabled selected>Select your country</option>
+		<option value="US">United States</option>
+		<option value="IN">India</option>
+		<option value="UK">United Kingdom</option>
+	</select>
+	<div *ngIf="myForm.submitted && !myForm.controls['country']?.valid">Country is required</div>
+
+	<!-- Date Input -->
+	<label for="dob">Date of Birth:</label>
+	<input type="date" id="dob" name="dob" ngModel>
+
+	<!-- Color Input -->
+	<label for="favcolor">Favorite Color:</label>
+	<input type="color" id="favcolor" name="favcolor" ngModel>
+
+	<!-- File Input -->
+	<label for="profilePic">Profile Picture:</label>
+	<input type="file" id="profilePic" name="profilePic" (change)="onFileSelected($event)" required>
+
+	<!-- Submit Button -->
+	<button type="submit" [disabled]="!myForm.valid">Submit</button>
+</form>
+
+<!-- Form Output for Debugging -->
+<div *ngIf="submittedData">
+	<h3>Form Data:</h3>
+	<pre>{{ submittedData | json }}</pre>
+</div>
