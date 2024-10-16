@@ -1,5 +1,4 @@
 <p>user-crud works!</p>
-<!-- src/app/user-crud/user-crud.component.html -->
 <div class="container">
 	<h2>User Management</h2>
 
@@ -11,10 +10,7 @@
 
 		<div>
 			<label for="password">Password</label>
-			<input type="password"
-				   [(ngModel)]="selectedUser.password"
-				   name="password"
-				   required />
+			<input type="password" [(ngModel)]="selectedUser.password" name="password" required />
 		</div>
 
 		<button type="submit">{{ isEditMode ? 'Update' : 'Add' }} User</button>
