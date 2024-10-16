@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { FormComponent } from './admin/form/form.component';
+import { CrudComponent } from './admin/crud/crud.component';
+import { UserCrudComponent } from './admin/user-crud/user-crud.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { FormComponent } from './admin/form/form.component';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    FormComponent
+    FormComponent,
+    CrudComponent,
+    UserCrudComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,

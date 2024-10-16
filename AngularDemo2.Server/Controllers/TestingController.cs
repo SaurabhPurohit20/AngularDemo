@@ -1,4 +1,5 @@
-﻿using AspNetCore.Reporting;
+﻿using AngularDemo2.Server.Context;
+using AspNetCore.Reporting;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Text;
@@ -7,7 +8,7 @@ namespace AngularDemo2.Server.Controllers
 {
 	[Route("api/")]
 	[ApiController]
-	public class TestingController(IWebHostEnvironment webHostEnvironment) : ControllerBase
+	public class TestingController(IWebHostEnvironment webHostEnvironment, AngularDemoContext db) : ControllerBase
 	{
 		[HttpGet("report")]
 		public IActionResult GetReport()
@@ -33,6 +34,14 @@ namespace AngularDemo2.Server.Controllers
 		[HttpPost("register")]
 		public IActionResult Register([FromBody] RegisterModel rm)
 		{
+			db.TblUsers.Add(new()
+			{
+				Username = rm.Name,
+				Password = rm.Password,
+				Date = DateTime.Now,
+				Status = 0,
+			});
+			db.SaveChanges();
 			return Ok(new { e = false, msg = "Registered successfully", rm });
 		}
 	}

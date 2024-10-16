@@ -1,8 +1,13 @@
 <p>dashboard works!</p>
 
-<a routerLink="/register">Register</a>
-<a routerLink="/form">Form</a>
+<div style="display:flex;flex-direction:column;justify-content:space-evenly;align-items:center;">
+	<a routerLink="/api-crud">Api Crud</a>
+	<a routerLink="/crud">Crud</a>
+	<a routerLink="/register">Register</a>
+	<a routerLink="/form">Form</a>
 
-<a href="/api/report" target="_blank">Open Report</a>
-
-<button (click)="onLogout()">Logout</button>
+	<a href="/api/report" target="_blank">Open Report</a>
+	<div>
+		<button (click)="onLogout()">Logout</button>
+	</div>
+</div>

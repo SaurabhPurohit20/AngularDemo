@@ -12,10 +12,7 @@ export class FormComponent {
   // Handle form submission
   onSubmit(form: any) {
     if (form.valid) {
-      this.submittedData = {
-        ...form.value,
-        profilePic: this.file ? this.file.name : null
-      };
+      this.submittedData = { ...form.value, profilePic: this.file ? this.file.name : null };
       console.log('Form Submitted!', this.submittedData, this.file?.size);
     } else {
       console.log('Form is invalid');
@@ -24,8 +21,6 @@ export class FormComponent {
 
   // Handle file selection
   onFileSelected(event: any) {
-    if (event.target.files.length > 0) {
-      this.file = event.target.files[0];
-    }
+    if (event.target.files.length > 0) { this.file = event.target.files[0]; }
   }
 }
